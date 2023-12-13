@@ -1,8 +1,8 @@
 # GTB
 
-**GTB** is a temporal graph **G**eneration method featuring **T**ime-**B**ound communities, the type of communities that is destined to disintegrate. To the best of our knowledge, GTB is the first work tempting on the generation of time-bound communities. 
+**GTB** is a temporal graph **G**eneration method featuring **T**ime-**B**ound communities, the type of communities that are destined to disintegrate. To the best of our knowledge, GTB is the first work tempting on the generation of time-bound communities. 
 
-As the following figure shows, the primary phases in operating GTB include (1) grouping nodes to distinct communities, (2) binding time windows to these communities, and (3) generating temporal links within and between each community. The core component supporting GTB is the Temporal Edge Distribution (TED) model, which can simulate user-defined distributions of temporal edges while keeping a low cost to build indexes, owing to its transferability from a time-bound community to another.
+As the following figure shows, the primary phases in operating GTB include (1) grouping nodes to distinct communities, (2) binding time windows to these communities, and (3) generating temporal links within and between each community. The core component supporting GTB is the Temporal Edge Distribution (TED) model, which can simulate user-defined distributions of temporal edges while keeping a low cost to build indexes, owing to its transferability from one time-bound community to another.
 
 ![The workflow of GTB](GTB.png)
 
@@ -21,7 +21,7 @@ As the following figure shows, the primary phases in operating GTB include (1) g
    > git clone https://github.com/ukyotachibana0/GTB.git
    ```
 
-2. The executable file `GTB` is already located at `bin` directory. In case you want to do some modifications to the source code, you can rebuild the project by the following commands in the project directory:
+2. The executable `GTB` is currently situated within the `bin` directory. In case you want to do some modifications to the source code, you can rebuild the project by the following commands in the project directory:
 
    ```
    > mkdir build
@@ -30,7 +30,7 @@ As the following figure shows, the primary phases in operating GTB include (1) g
    > cmake --build .
    ```
 
-   Then the executable file is outputted as `bin/GTB`.
+   Then the compilation results in the executable file `bin/GTB`.
 
 3. Execute:
 
@@ -39,7 +39,7 @@ As the following figure shows, the primary phases in operating GTB include (1) g
    > ./GTB [config_filename] [store_dirname]
    ```
 
-   , where `[config_filename]` is the name of the configuration file with the JSON format, and `[store_dirname]` is the name of the directory where you want to store the output datasets. For example, you can use the following command to generate an example graph:
+   , where `[config_filename]` is the name of the configuration file with the JSON format, and `[store_dirname]` is the name of the directory where you want to store the output dataset. For example, you can use the following command to generate an example graph:
 
    ```
    > ./GTB ../example.json .
@@ -47,7 +47,7 @@ As the following figure shows, the primary phases in operating GTB include (1) g
 
 #### To configure GTB:
 
-GTB allows configuration in a JSON format. Primary keys in the JSON file include:
+GTB allows configuration using the JSON format, with essential keys incorporated in the JSON file as follows:
 
 | Key                                                          | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -67,12 +67,12 @@ GTB allows configuration in a JSON format. Primary keys in the JSON file include
 | `edge`-`community`-`amount`                                  | The amount of communities for an edge type.                  |
 | `edge`-`community`-`lambda`                                  | The power-law distribution parameter for community sizes.    |
 | `edge`-`community`-`delta`                                   | The time-bound community messing parameter $\delta$.         |
-| <span style="white-space:nowrap;">`edge`-`community`-`overlap`</span> | The overlap configurations for time-bound communities associated with an edge type. The keys in the overlap configuration involves the number `m` of the overlap relationships, the minimum `min_omega` of the time-bound community overlapping parameter $\Omega$, and the maximum `max_omega` of the time-bound community overlapping parameter $\Omega$. |
-| `store_format`                                               | The store format of the edges, including `TSV` and `ADJ`     |
+| <span style="white-space:nowrap;">`edge`-`community`-`overlap`</span> | The overlap configuration for time-bound communities associated with an edge type. The keys in the overlap configuration involves the number `m` of the overlap relationships, the minimum `min_omega` of the time-bound community overlapping parameter $\Omega$, and the maximum `max_omega` of the time-bound community overlapping parameter $\Omega$. |
+| `store_format`                                               | The store format of the generated edges, including `TSV` and `ADJ`     |
 
-If `ts` and `community` are simultaneously provided, a temporal graph featuring time-bound communities will be generated based on the configuration. Otherwise, a general graph will be generated.
+If `ts` and `community` are simultaneously provided within the JSON configuration, a temporal graph featuring time-bound communities will be generated according to the given parameters. Otherwise, a general graph will be generated.
 
-The `example.json` in the project directory gives a concrete example of the configuration file to generate a temporal graph featuring time-bound communities.
+The `example.json` file in the project directory gives a specific instance of a configuration file designed for generating a temporal graph with time-bound communities.
 
 ```json
 {
