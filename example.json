@@ -1,0 +1,21 @@
+{
+    "graph": "gt",
+    "node": [{
+        "label": "user",
+        "amount": 10000
+    }],
+    "edge": [{
+        "label": "follow",
+        "source": "user",
+        "target": "user",
+        "amount": 80000,
+        "in": {"type": "power_law", "lambda": 1.15, "min_d": 1, "max_d": 50},
+        "out": {"type": "power_law", "lambda": 1.15, "min_d": 1, "max_d": 60},
+        "ts": {"type": "exponential", "lambda": 1.15, "min_ts": 1, "max_ts": 5000},
+        "community": {
+            "amount": 4, "delta": 0.1, "lambda": 1.15,
+            "overlap": {"m": 2, "min_omega": 0.01, "max_omega": 0.2}
+        }
+    }],
+    "store_format": "TSV"
+}
